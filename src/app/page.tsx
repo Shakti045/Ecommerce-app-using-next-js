@@ -7,16 +7,6 @@ import {Swiper, SwiperSlide} from "swiper/react"
 import "swiper/css"
 import "swiper/css/pagination"
 import { Autoplay,Navigation,Pagination}  from "swiper"
-import banner2 from "@/assets/images/bannerimages/banner1.webp"
-import banner1  from "@/assets/images/bannerimages/banner2.webp"
-import banner3 from "@/assets/images/bannerimages/banner3.webp"
-import banner4 from "@/assets/images/bannerimages/banner4.webp"
-import banner5 from "@/assets/images/bannerimages/banner5.webp"
-import banner6 from "@/assets/images/bannerimages/banner6.webp"
-import banner7 from "@/assets/images/bannerimages/banner7.webp"
-import banner8 from "@/assets/images/bannerimages/banner8.webp"
-import banner9 from "@/assets/images/bannerimages/fashionsale (1).jpg"
-import banner10 from "@/assets/images/bannerimages/fashion-sale.webp"
 import card from "@/assets/images/bannerimages/card.webp"
 import Image from "next/image"
 import Productcard from "@/components/Home/Productcard"
@@ -32,7 +22,7 @@ export default function Page() {
   const dispatch:AppDispatch = useDispatch();
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
-  const banners=[banner1,banner2,banner3,banner4,banner5,banner6,banner7,banner8,banner9,banner10];  
+  const banners=["https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358016/banner9_nf8wkg.webp"];  
   const [products, setProducts] = useState([])
   const [topdiscountproducts, setTopdiscountproducts] = useState([]);
   const [topsellingproducts, setTopsellingproducts] = useState([]);
