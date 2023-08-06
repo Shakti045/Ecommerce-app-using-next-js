@@ -145,7 +145,7 @@ export default function Page() {
                     {
                       banners.map((item:any,index)=>(
                         <SwiperSlide key={index}>
-                        <Image   src={item} alt="banner" />
+                        <img   src={item} alt="banner" />
                         </SwiperSlide>
                       ))
                     }
