@@ -22,7 +22,7 @@ export default function Page() {
   const dispatch:AppDispatch = useDispatch();
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
-  const banners=["https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358016/banner9_nf8wkg.webp"];  
+  const banners=["https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner2_r1gfg9.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner6_ni11n7.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner4_hgzv7z.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner1_ri0jwo.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner3_g82zfl.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner1_ri0jwo.webp"];  
   const [products, setProducts] = useState([])
   const [topdiscountproducts, setTopdiscountproducts] = useState([]);
   const [topsellingproducts, setTopsellingproducts] = useState([]);
@@ -135,7 +135,7 @@ export default function Page() {
                     {
                       banners.map((item:any,index)=>(
                         <SwiperSlide key={index}>
-                        <img   src={item} alt="banner" />
+                        <Image  src={item} alt="banner" />
                         </SwiperSlide>
                       ))
                     }
