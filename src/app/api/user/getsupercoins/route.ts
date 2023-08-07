@@ -12,12 +12,12 @@ export async function GET(req: NextRequest) {
             },{status:404})
         }
         await connectdb();
-        const userfromdb=await User.findById(user.id,{supercoins:1})
+        const userfromdb=await User.findById(user.id)
         console.log(userfromdb);
         if(!userfromdb){
             return NextResponse.json({
                 Success:false,
-                Message:"User not found"
+                Message:"User not found db"
             },{status:404})
         }
         return NextResponse.json({
