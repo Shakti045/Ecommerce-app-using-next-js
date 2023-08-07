@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect , useState } from 'react'
 import Loading from "@/app/loading"
 import axios from "axios"
 import { toast } from "react-toastify"
@@ -11,12 +11,14 @@ import Supercoinbanner from "@/assets/images/Earnrate-banner-DT (1).webp"
 import ReactPlayer from 'react-player'
 
 const page = () => {
- const [loading, setLoading] = React.useState(true)
- const [supercoins, setSupercoins] = React.useState(0)
- const {token}=useSelector((state:RootState)=>state.auth)
+ const {token}=useSelector((state:any)=>state.auth)
+ const [loading, setLoading] = useState(true)
+ const [supercoins, setSupercoins] = useState(0)
+
 
  async function getsupercoins(){
     try{
+       console.log(token)
        const res = await axios.get("/api/user/getsupercoins",{
             headers:{
                   Authorization:`Bearer ${token}`
