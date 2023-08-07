@@ -85,7 +85,7 @@ export async function PUT(req:NextRequest){
             
              
              const deleteditem=orderhistory.products.find((item:any)=>item.get('_id')===productid);
-             await User.updateOne({_id:user.id},{$inc:{supercoins:(deleteditem.get('supercoinsused')-deleteditem.get('supercoinsearned'))}})
+             await User.updateOne({_id:user.id},{$inc:{supercoins:(deleteditem.get('supercoinsused'))}})
             return NextResponse.json({
                 Success:true,
                 Message:"Order deleted successfully"
