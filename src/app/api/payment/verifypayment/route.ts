@@ -73,7 +73,7 @@ export async function POST(req:NextRequest){
         for(let i=0;i<products.length;i++){
             const currentproduct=products[i];
             currentproduct.supercoinsearned=(Math.floor(currentproduct.sellprice*0.02)>=200?200:Math.floor(currentproduct.sellprice*0.02))*currentproduct.quantity;
-            const supercoinsusedinthis=Math.floor(((supercoinsused/100)/(totalamount/100))*currentproduct.sellprice*currentproduct.quantity);
+             const supercoinsusedinthis=Math.floor(((supercoinsused/100)/((totalamount+supercoinsused)/100))*currentproduct.sellprice*currentproduct.quantity);
             currentproduct.supercoinsused=supercoinsusedinthis;
             sellerdata.push({
                 sellerid:currentproduct.seller._id,
