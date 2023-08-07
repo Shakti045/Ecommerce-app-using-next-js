@@ -62,9 +62,7 @@ export async function POST(req:NextRequest){
                 message:"Something went wrong while creating order"
             },{status:500})
         }
-        const updatedsupercoins=(myuser.supercoins-supercoinsused)
-        +supercoinsearned;
-        await User.findByIdAndUpdate(user.id,{supercoins:updatedsupercoins});
+
         
      
 
