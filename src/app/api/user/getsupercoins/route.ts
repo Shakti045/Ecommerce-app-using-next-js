@@ -8,7 +8,8 @@ export async function GET(req: NextRequest) {
         if(!user){
             return NextResponse.json({
                 Success:false,
-                Message:"User not found"
+                Message:"User not found",
+              token:req.headers.get("Authorization")?.replace("Bearer ","")
             },{status:404})
         }
         await connectdb();
@@ -17,7 +18,8 @@ export async function GET(req: NextRequest) {
         if(!userfromdb){
             return NextResponse.json({
                 Success:false,
-                Message:"User not found db"
+                Message:"User not found db",
+              token:req.headers.get("Authorization")?.replace("Bearer ","")
             },{status:404})
         }
         return NextResponse.json({
