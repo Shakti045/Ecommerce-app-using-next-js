@@ -77,7 +77,7 @@ export async function POST(req:NextRequest){
             currentproduct.supercoinsused=supercoinsusedinthis;
             sellerdata.push({
                 sellerid:currentproduct.seller._id,
-                selllprice:currentproduct.sellprice,
+                sellprice:currentproduct.sellprice,
                 originalprice:currentproduct.originalprice,
                 productid:currentproduct._id,
                 quantity:currentproduct.quantity,
