@@ -55,7 +55,9 @@ export async function POST(req:NextRequest){
             },{status:400})
 
         }
-        const myuser=await User.findById(user.id);
+        
+        const myuser= await User.findByIdAndUpdate(user.id,{$inc:{supercoins:-supercoinsused}});
+        
         if(!myuser){
             return NextResponse.json({
                 Success:false,
