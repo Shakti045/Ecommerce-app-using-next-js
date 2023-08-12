@@ -163,7 +163,7 @@ export default function Page() {
                 <h1 className=" font-bold text-2xl ">Best Selling Products</h1>
               <h1 className=" opacity-60">Peoples loved theese products</h1>
                 </div>
-              <Productcard products={data?.Bestsellingproductss} />
+              <Productcard products={data?.Bestsellingproducts} />
            </div>
            <div className= " rounded-md flex flex-col gap-3 p-2 bg-white    mx-4 mt-4">
               <div className=" border-b-2 border-slate-200 pb-3">
