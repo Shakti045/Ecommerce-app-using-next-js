@@ -20,14 +20,15 @@ import Jwt  from "jsonwebtoken"
 import {signOut,useSession} from "next-auth/react"
 export default function Page() {
   const dispatch:AppDispatch = useDispatch();
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [loading, setLoading] = useState(true);
   const banners=["https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner2_r1gfg9.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner6_ni11n7.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner4_hgzv7z.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner1_ri0jwo.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner3_g82zfl.webp","https://res.cloudinary.com/djq1vmvy4/image/upload/v1691358015/banner1_ri0jwo.webp"];  
-  const [products, setProducts] = useState([])
-  const [topdiscountproducts, setTopdiscountproducts] = useState([]);
-  const [topsellingproducts, setTopsellingproducts] = useState([]);
-  const [newproducts, setNewproducts] = useState([]);
+  // const [products, setProducts] = useState([])
+  // const [topdiscountproducts, setTopdiscountproducts] = useState([]);
+  // const [topsellingproducts, setTopsellingproducts] = useState([]);
+  // const [newproducts, setNewproducts] = useState([]);
   const {token}=useSelector((state:any)=>state.auth);
+  const [data, setData] = useState<any>(null);
   // async function getallcategory() {
 
   //   try{
@@ -46,12 +47,13 @@ export default function Page() {
       try{
         const res = await axios.get(producturl.getallproducts);
         if(res.status === 200){
-          const {Topdiscountproducts,Bestsellingproducts,Newproducts,Products,Categories} = res.data;
-          setData(Categories);
-          setProducts(Products);
-          setTopdiscountproducts(Topdiscountproducts);
-          setTopsellingproducts(Bestsellingproducts);
-          setNewproducts(Newproducts);
+          setData(res.data);
+          // const {Topdiscountproducts,Bestsellingproducts,Newproducts,Products,Categories} = res.data;
+          // setData(Categories);
+          // setProducts(Products);
+          // setTopdiscountproducts(Topdiscountproducts);
+          // setTopsellingproducts(Bestsellingproducts);
+          // setNewproducts(Newproducts);
         }
       }catch(err:any){
         console.log(err)
@@ -100,9 +102,16 @@ export default function Page() {
       }
     }
     
-  useEffect(()=>{
+  // useEffect(()=>{
+  //   checktokenvalidity();
+  //   initialload()
+  // },[]);
+  
+    useEffect(()=>{
     checktokenvalidity();
-    initialload()
+    if(data===null ){
+      initialload()
+    }
   },[]);
   return (
       <>
@@ -110,7 +119,7 @@ export default function Page() {
           loading ? <Loading/> :(<div className=" flex flex-col gap-3">
           <div className="  mx-4 mt-4 p-2 bg-slate-200 shadow-lg  flex justify-around">
           {
-            data.map((item:any,index)=>(
+            data?.Categories?.map((item:any,index)=>(
               <Link href={`/category/${item._id}`} key={index} className=" group flex flex-col items-center">
               <img className=" h-[70px] w-[70px] rounded-full" src={item?.picture} alt="categoryiamge"></img>
               <h1 className=" group-hover:text-blue-700 font-bold">{item?.name}</h1>
@@ -147,28 +156,28 @@ export default function Page() {
              <h1 className=" font-bold text-2xl ">Top Discount Products</h1>
               <h1 className=" opacity-60">Offers never comes again</h1>
              </div>
-              <Productcard products={topdiscountproducts} />
+              <Productcard products={data?.Topdiscountproducts} />
            </div>
            <div className=" rounded-md flex flex-col gap-3 p-2 bg-white   mx-4 mt-4">
                 <div className=" border-b-2 border-slate-200 pb-3">
                 <h1 className=" font-bold text-2xl ">Best Selling Products</h1>
               <h1 className=" opacity-60">Peoples loved theese products</h1>
                 </div>
-              <Productcard products={topsellingproducts} />
+              <Productcard products={data?.Bestsellingproductss} />
            </div>
            <div className= " rounded-md flex flex-col gap-3 p-2 bg-white    mx-4 mt-4">
               <div className=" border-b-2 border-slate-200 pb-3">
               <h1 className=" font-bold text-2xl ">New To Flipkart</h1>
               <h1 className=" opacity-60">Be The first to have theese</h1>
               </div>
-              <Productcard products={newproducts} />
+              <Productcard products={data?.Newproducts} />
            </div>
            <div className="  rounded-md flex flex-col gap-3 p-2 bg-white    mx-4 mt-4">
              <div className=" border-b-2 border-slate-200 pb-3">
              <h1 className=" font-bold text-2xl ">Many More Products</h1>
               <h1 className=" opacity-60">Explore infinite products</h1>
              </div>
-              <Productcard products={products} />
+              <Productcard products={data?.Products} />
            </div>
         </div>)
         }
