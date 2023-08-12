@@ -119,7 +119,7 @@ export default function Page() {
           loading ? <Loading/> :(<div className=" flex flex-col gap-3">
           <div className="  mx-4 mt-4 p-2 bg-slate-200 shadow-lg  flex justify-around">
           {
-            data?.Categories?.map((item:any,index)=>(
+            data?.Categories?.map((item:any,index:any)=>(
               <Link href={`/category/${item._id}`} key={index} className=" group flex flex-col items-center">
               <img className=" h-[70px] w-[70px] rounded-full" src={item?.picture} alt="categoryiamge"></img>
               <h1 className=" group-hover:text-blue-700 font-bold">{item?.name}</h1>
